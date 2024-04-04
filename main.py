@@ -21,19 +21,18 @@ def fetch_chats():
     source_found = destination_found = False
     print('fetching chats looking for', source_channel, 'and', destination_channel)
     for dialog in client.iter_dialogs():
-        if dialog.is_channel:
-            # print(f'{dialog.id}:{dialog.title}')
-            if dialog.title == source_channel:
-                source_found = True
-                # print('source channel found')
-            elif dialog.title == destination_channel:
-                destination_found = True
-                # print('destination channel found')
-            if source_found and destination_found:
-                print('Channels found! Starting listening')
-                return
-    print('channel not found, forcing exit')
-    sys.exit("STOPPING APPLICATION! Cannot find channels")
+        # print(f'{dialog.id}:{dialog.title}')
+        if dialog.title == source_channel:
+            source_found = True
+            # print('source channel found')
+        elif dialog.title == destination_channel:
+            destination_found = True
+            # print('destination channel found')
+        if source_found and destination_found:
+            print('Channels/Chats found! Starting listening')
+            return
+    print('channel/chat not found, forcing exit')
+    sys.exit("STOPPING APPLICATION! Cannot find channels/chats")
 
 
 @client.on(events.NewMessage(chats=source_channel))
