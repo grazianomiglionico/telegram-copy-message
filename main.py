@@ -4,7 +4,7 @@ import sys
 from telethon import TelegramClient, events
 
 config = configparser.ConfigParser()
-config.read("config.ini")
+config.read("config.ini", encoding='utf-8')
 
 source_channel = config['Telegram']['source_channel']
 destination_channel = config['Telegram']['destination_channel']
